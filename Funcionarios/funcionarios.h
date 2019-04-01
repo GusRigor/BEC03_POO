@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include <sstream>
+#include <fstream>
 using namespace std;
 
 class funcionario{
@@ -11,6 +12,7 @@ class funcionario{
     string sobrenome;
     string data;
     double salario;
+    ofstream saida;
   public:
     funcionario(){
       id=0;
@@ -65,8 +67,8 @@ class funcionario{
     virtual void imprimir(){ }
 
     void printF(){
-      cout<<endl;
-      cout << id << " " << nome << " " << sobrenome << " " << data << " R$" << salario;
+      saida<<endl;
+      saida << id << " " << nome << " " << sobrenome << " " << data << " R$" << salario;
     }
 };
 
@@ -120,7 +122,7 @@ class gerente: public funcionario{
 
     void imprimir(){
       printF();
-      cout << " " << atuacao << " " << nfunc<<" funcionários";     
+      saida << " " << atuacao << " " << nfunc<<" funcionários";     
     }
    };
 
@@ -155,7 +157,7 @@ class engenheiro:public funcionario{
 
     void imprimir(){
         printF();
-          cout << " " << atuacao << " " << gerencia;
+          saida << " " << atuacao << " " << gerencia;
     }
       
 };
@@ -197,7 +199,7 @@ class desenvolvedor:public funcionario{
 
     void imprimir(){
         printF();
-          cout<< linguagem << " " << gerencia << " " << instrucao;
+          saida<< linguagem << " " << gerencia << " " << instrucao;
     }
       
 };
@@ -232,7 +234,7 @@ class rh:public funcionario{
   }
   void imprimir(){
     printF();
-    cout << " " << recrutamento << " " << instrucao;
+    saida << " " << recrutamento << " " << instrucao;
   }
 };
 
@@ -263,6 +265,6 @@ class auxliar:public funcionario{
     }
     void imprimir(){
       printF();
-        cout << " " << gerencia << " " << instrucao;
+        saida << " " << gerencia << " " << instrucao;
       }
 };
